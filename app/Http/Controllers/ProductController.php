@@ -19,54 +19,66 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'title'=>'required',
-            'description' => 'required',
-            'price' => 'required'
+
+
+
+
+
+        $Products = new Product([
+            "title" => $request->input('title'),
+            "description" => $request->input('description'),
+            "price" => $request->input('price'),
+
         ]);
 
-
+        $Products->save();
 
         return response()->json([
             'message'=>'Item added successfully'
         ]);
-
-
-
-        // return redirect('/')->with('success', 'Personnage Ajouté avec succès');
     }
 
 
-    // public function show($id)
-    // {
-    //     $product = Product::findOrFail($id);
-    //     return view('first.show', ['productTarget' => $product]);
-    // }
+    public function show($id)
+    {
+        $product = Product::findOrFail($id);
+        return response()->json([
+            'product' => $product
+        ]);
+    }
 
 
-    // public function edit($id)
-    // {
-    //     $product = Product::findOrFail($id);
-    //     return view('first.edit', ['productTarget' => $product]);
+    public function edit($id)
+    {
+        $product = Product::findOrFail($id);
+        return response()->json([
+            'product' => $product
+        ]);
+
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        $Product = Product::findOrFail($id);
+        $Product->title = $request->input('title');
+        $Product->description = $request->input('description');
+        $Product->price = $request->input('price');
+
+        $Product->update();
+        $Product->save();
+        return response()->json([
+            'message' => 'Item updated successfully'
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        $Product = Product::findOrFail($id);
+
+        $Product->delete();
 
 
-    // }
-
-    // public function update(Request $request, $id)
-    // {
-    //     $Product = Product::findOrFail($id);
-    //     $Product->title = $request->input('title');
-    //     $Product->prix = $request->input('prix');
-
-    //     $Product->update();
-    //     return redirect('/')->with('success', 'Personnage Modifié avec succès');
-    // }
-
-    // public function destroy($id)
-    // {
-    //     $Product = Product::findOrFail($id);
-    //     $Product->delete();
-    //     return redirect('/')->with('success', 'Personnage Modifié avec succès');
-    // }
+    }
 
 }

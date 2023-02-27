@@ -19,7 +19,9 @@ use App\Http\Middleware\corsIssue;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-Route::get('/', [ProductController::class,'index']);
-Route::post('/product', [ProductController::class,'store']);
-// Route::resource('products', ProductController::class);middleware(['handleCors'])
-
+Route::get('/product/get', [ProductController::class,'index']);
+Route::get('/product/show/{id}', [ProductController::class,'show']);
+Route::post('/product/add', [ProductController::class,'store']);
+Route::get('/product/edit/{id}', [ProductController::class,'edit']);
+Route::patch('/product/{id}', [ProductController::class,'update']);
+Route::post('/product/delete/{id}', [ProductController::class,'destroy']);
