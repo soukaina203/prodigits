@@ -19,7 +19,7 @@ use App\Http\Middleware\corsIssue;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-Route::get('/', [ProductController::class,'index'])->middleware(corsIssue::class);
-Route::post('/product', [ProductController::class,'store'])->middleware(corsIssue::class);
+Route::get('/', [ProductController::class,'index']);
+Route::post('/product', [ProductController::class,'store']);
 // Route::resource('products', ProductController::class);middleware(['handleCors'])
 

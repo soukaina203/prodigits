@@ -2,6 +2,8 @@
     "private": true,
     "scripts": {
         "dev": "vite",
+        "ii": "composer install",
+        "b": "php artisan serve --host=localhost --port=8000",
         "build": "vite build"
     },
     "devDependencies": {

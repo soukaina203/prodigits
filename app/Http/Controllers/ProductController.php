@@ -33,7 +33,7 @@ class ProductController extends Controller
 
 
 
-        return redirect('/')->with('success', 'Personnage Ajouté avec succès');
+        // return redirect('/')->with('success', 'Personnage Ajouté avec succès');
     }
 
 
